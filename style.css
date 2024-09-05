@@ -1,0 +1,67 @@
+/* 
+    Algumas propriedades que estão aqui @property, @keyframes, infelizmente ainda não sei, vi apenas o tutorial no YouTube ainda irei aprender.
+*/
+body{
+    background-color: #212529;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    margin: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.card{
+    height: 250px;
+    width: 250px;
+    background-color: #343A40;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.5rem;
+}
+@property --angulo{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.card::after, .card::before{
+    content: '';
+    border-radius: 10px;
+    padding: 1.7rem;
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(var(--angulo), red, orange, yellow, green, blue, indigo, violet, red);
+    z-index: -1;
+    animation: spin 10s linear infinite;
+}
+.card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+@keyframes spin{
+    from{
+        --angulo: 0deg;
+    }
+    to{
+        --angulo: 360deg;
+    }
+}
+.card-titulo{
+    padding: 0.5rem;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    /* text-wrap: nowrap; */
+}
+.card-conteudo{
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    text-align: justify;
+    font-weight: 400;
+}
+.assinatura{
+    text-align: right;
+    font-style: italic;
+}
